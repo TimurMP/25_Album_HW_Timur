@@ -1,4 +1,4 @@
-package telran.album.model;
+package telran.album.dao;
 
 public class AlbumImpl {
 }
