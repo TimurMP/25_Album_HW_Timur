@@ -1,2 +1,4 @@
-package telran.album.model;public class AlbumImpl {
+package telran.album.model;
+
+public class AlbumImpl {
 }
