@@ -11,6 +11,8 @@ public interface Album {
     Photo getPhotoFromAlbum (int photoId, int albumId);
     Photo[] getAllPhotosFromAlbum(int albumId);
     Photo[] getPhotoBetweenDate(LocalDate dateFrom, LocalDate dateTo);
+
+    void printPhotos();
     int size();
 
 
