@@ -44,6 +44,11 @@ class AlbumImplTest {
 
     @Test
     void removePhoto() {
+        assertFalse(album.removePhoto(666,666));
+        album.removePhoto(3, 504);
+        assertEquals(5, album.getSize());
+        album.printPhotos();
+
     }
 
     @Test

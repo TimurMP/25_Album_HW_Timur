@@ -33,6 +33,14 @@ public class AlbumImpl implements Album {
 
     @Override
     public boolean removePhoto(int photoId, int albumId) {
+        for (int i = 0; i < size; i++) {
+            if (photoId == photos[i].getPhotoID() && albumId == photos[i].getAlbumID()){
+                photos[i] = photos[size-1];
+                size--;
+                return true;
+            }
+
+        }
         return false;
     }
 
