@@ -14,7 +14,7 @@ public interface Album {
     Photo[] getPhotoBetweenDate(LocalDate dateFrom, LocalDate dateTo);
 
     void printPhotos();
-    int size();
+    int getSize();
 
     LocalDateTime parseDate (String date);
 

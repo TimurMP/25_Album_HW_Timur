@@ -52,6 +52,8 @@ class AlbumImplTest {
 
     @Test
     void getAllPhotosFromAlbum() {
+        Photo[] expected = {myVacation[3],myVacation[4],myVacation[5]};
+        assertArrayEquals(expected, album.getAllPhotosFromAlbum(505));
     }
 
     @Test
@@ -63,8 +65,11 @@ class AlbumImplTest {
     }
 
     @Test
-    void size() {
+    void testSize() {
     }
+
+
+
 
 
 }
