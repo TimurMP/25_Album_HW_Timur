@@ -75,5 +75,6 @@ public class Photo implements Comparable<Photo>{
     @Override
     public int compareTo(Photo o) {
         return date.compareTo(o.date);
+//        return LocalDateTime
     }
 }

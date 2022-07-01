@@ -7,6 +7,7 @@ import telran.album.interfaces.Album;
 import telran.album.model.Photo;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,6 +16,7 @@ class AlbumImplTest {
     Album album;
     Album album2;
     Photo[] myVacation;
+
 
     @BeforeEach
     void setUp() {
@@ -86,6 +88,23 @@ class AlbumImplTest {
 
     }
 
+
+    @Test
+    void Temp() {
+        int compare = myVacation[0].compareTo(myVacation[3]);
+        System.out.println(compare);
+        Photo[] expected = {myVacation[0],myVacation[3]};
+        for (int i = 0; i < expected.length; i++) {
+            System.out.println(expected[i]);
+        }
+        Arrays.sort(expected);
+        System.out.println("-----------");
+        for (int i = 0; i < expected.length; i++) {
+            System.out.println(expected[i]);
+
+        }
+
+    }
 
 
 

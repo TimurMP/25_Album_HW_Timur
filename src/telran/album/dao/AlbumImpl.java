@@ -6,6 +6,7 @@ import telran.album.model.Photo;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.function.Predicate;
 
 public class AlbumImpl implements Album {
@@ -15,6 +16,7 @@ public class AlbumImpl implements Album {
 
     public AlbumImpl(int capacity) {
         photos = new Photo[capacity];
+
     }
 
     @Override
@@ -25,11 +27,43 @@ public class AlbumImpl implements Album {
         if (photo.equals(getPhotoFromAlbum(photo.getPhotoID(), photo.getAlbumID()))) {
             return false;
         }
+        if (getSize() == 2) {
+            Photo[] photoCopy = new Photo[size];
+            System.arraycopy(photos, 0, photoCopy, 0, size);
+            Arrays.sort(photoCopy);
+            System.arraycopy(photoCopy, 0, photos, 0, photoCopy.length);
+        }
+        if (getSize() > 2) {
+            Photo[] photoCopy = new Photo[size + 1];
+            int index = Arrays.binarySearch(photos, 0, size, photo);
+            if (index < 0) {
+                System.arraycopy(photos, 0, photoCopy, 0, (-index - 1));
+                System.arraycopy(photos, (-index - 1), photoCopy, (-index - 1) + 1, size - (-index - 1));
+                photoCopy[-index - 1] = photo;
+
+            }
+            if (index >= 0) {
+                System.arraycopy(photos, index, photoCopy, index + 1, size - index);
+                System.arraycopy(photos, 0, photoCopy, 0, index);
+                photoCopy[index] = photo;
+            }
+            System.arraycopy(photoCopy, 0, photos, 0, photoCopy.length);
+            size++;
+            return true;
+
+        }
         photos[size] = photo;
         size++;
 
         return true;
     }
+
+    private Photo[] sortPhotos(Photo[] photos) {
+        Photo[] photoCopy = new Photo[photos.length];
+        Arrays.sort(photoCopy);
+        return photoCopy;
+    }
+
 
     @Override
     public boolean removePhoto(int photoId, int albumId) {
