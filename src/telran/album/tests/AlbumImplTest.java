@@ -53,6 +53,11 @@ class AlbumImplTest {
 
     @Test
     void updatePhoto() {
+        Photo expected = new Photo(505, 2, "TA", "http://10.10.10.10/myTrip/002", album.parseDate("02.Oct.2021 03:08 AM"));
+        album.updatePhoto(2,505,"http://10.10.10.10/myTrip/002");
+        assertEquals(expected, myVacation[4]);
+        album.printPhotos();
+
     }
 
     @Test

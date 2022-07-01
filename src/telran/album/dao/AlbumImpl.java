@@ -22,7 +22,7 @@ public class AlbumImpl implements Album {
         if (photos.length == size) {
             return false;
         }
-        if (photo.equals(getPhotoFromAlbum(photo.getPhotoID(), photo.getAlbumID()))){
+        if (photo.equals(getPhotoFromAlbum(photo.getPhotoID(), photo.getAlbumID()))) {
             return false;
         }
         photos[size] = photo;
@@ -34,18 +34,24 @@ public class AlbumImpl implements Album {
     @Override
     public boolean removePhoto(int photoId, int albumId) {
         for (int i = 0; i < size; i++) {
-            if (photoId == photos[i].getPhotoID() && albumId == photos[i].getAlbumID()){
-                photos[i] = photos[size-1];
+            if (photoId == photos[i].getPhotoID() && albumId == photos[i].getAlbumID()) {
+                photos[i] = photos[size - 1];
                 size--;
                 return true;
             }
-
         }
         return false;
     }
 
     @Override
-    public boolean updatePhoto(int photoID, int albumId, String url) {
+    public boolean updatePhoto(int photoID, int albumId, String newUrl) {
+        for (int i = 0; i < size; i++) {
+            if (photoID == photos[i].getPhotoID() && albumId == photos[i].getAlbumID()) {
+                photos[i].setUrl(newUrl);
+                return true;
+            }
+
+        }
         return false;
     }
 
@@ -64,7 +70,7 @@ public class AlbumImpl implements Album {
     @Override
     public Photo[] getAllPhotosFromAlbum(int albumId) {
 
-        return findPhotosByPredicate((photo -> photo.getAlbumID()==albumId));
+        return findPhotosByPredicate((photo -> photo.getAlbumID() == albumId));
     }
 
     @Override
