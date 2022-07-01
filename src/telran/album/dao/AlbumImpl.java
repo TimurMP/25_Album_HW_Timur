@@ -18,7 +18,15 @@ public class AlbumImpl implements Album {
 
     @Override
     public boolean addPhoto(Photo photo) {
-        return false;
+        if (photos.length == size){
+            return false;
+
+        }
+//        if (photo.equals())
+        photos[size] = photo;
+        size ++;
+
+        return true;
     }
 
     @Override
@@ -33,6 +41,14 @@ public class AlbumImpl implements Album {
 
     @Override
     public Photo getPhotoFromAlbum(int photoId, int albumId) {
+        for (int i = 0; i < size; i++) {
+            if (photoId == photos[i].getPhotoID() && albumId == photos[i].getAlbumID()){
+                System.out.println(photos[i]);
+                return photos[i];
+            }
+
+        }
+
         return null;
     }
 
@@ -50,7 +66,6 @@ public class AlbumImpl implements Album {
     public void printPhotos() {
         for (int i = 0; i < size; i++) {
             System.out.println(photos[i]);
-
         }
 
     }
