@@ -21,9 +21,10 @@ public class AlbumImpl implements Album {
     public boolean addPhoto(Photo photo) {
         if (photos.length == size) {
             return false;
-
         }
-//        if (photo.equals())
+        if (photo.equals(getPhotoFromAlbum(photo.getPhotoID(), photo.getAlbumID()))){
+            return false;
+        }
         photos[size] = photo;
         size++;
 
@@ -44,7 +45,6 @@ public class AlbumImpl implements Album {
     public Photo getPhotoFromAlbum(int photoId, int albumId) {
         for (int i = 0; i < size; i++) {
             if (photoId == photos[i].getPhotoID() && albumId == photos[i].getAlbumID()) {
-                System.out.println(photos[i]);
                 return photos[i];
             }
 

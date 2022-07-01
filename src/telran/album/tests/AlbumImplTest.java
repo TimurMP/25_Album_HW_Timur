@@ -15,7 +15,7 @@ class AlbumImplTest {
 
     @BeforeEach
     void setUp() {
-        album = new AlbumImpl(10);
+        album = new AlbumImpl(7);
         myVacation = new  Photo[6];
         myVacation[0] = new Photo(504, 1, "Sunset", "http://127.0.0.1/001", album.parseDate("01.Feb.2020 03:08 PM"));
         myVacation[1] = new Photo(504, 2, "Drunk", "http://127.0.0.1/002", album.parseDate("02.Mar.2021 03:08 AM"));
@@ -31,7 +31,14 @@ class AlbumImplTest {
 
     @Test
     void addPhoto() {
+        assertFalse(album.addPhoto(myVacation[2]));
+        Photo newPhoto = new Photo(506, 3, "aaa", "http://127.0.0.1/myTrip/003aa", album.parseDate("01.Jun.2027 08:08 PM"));
+        assertTrue(album.addPhoto(newPhoto));
+        assertEquals(7, album.getSize());
+        newPhoto = new Photo(666, 6, "aaa", "http://127.0.0.1/myTrip/003aa", album.parseDate("01.Jun.2027 08:08 PM"));
+        assertFalse(album.addPhoto(newPhoto));
         album.printPhotos();
+
 
     }
 
