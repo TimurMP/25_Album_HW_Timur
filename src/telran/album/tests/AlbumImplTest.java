@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Test;
 import telran.album.dao.AlbumImpl;
 import telran.album.interfaces.Album;
 import telran.album.model.Photo;
+
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -75,15 +78,16 @@ class AlbumImplTest {
 
     @Test
     void getPhotoBetweenDate() {
+        LocalDate from = LocalDate.of(2020, 2, 1);
+        LocalDate after = LocalDate.of(2022, 1, 1);
+        Photo[] expected = {myVacation[0],myVacation[1],myVacation[4]};
+        assertArrayEquals(expected, album.getPhotoBetweenDate(from, after));
+
+
     }
 
-    @Test
-    void printPhotos() {
-    }
 
-    @Test
-    void testSize() {
-    }
+
 
 
 

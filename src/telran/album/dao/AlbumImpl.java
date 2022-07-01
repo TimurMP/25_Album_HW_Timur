@@ -75,7 +75,8 @@ public class AlbumImpl implements Album {
 
     @Override
     public Photo[] getPhotoBetweenDate(LocalDate dateFrom, LocalDate dateTo) {
-        return new Photo[0];
+        return findPhotosByPredicate(photo -> photo.getDate().toLocalDate().isEqual(dateFrom) ||
+                photo.getDate().toLocalDate().isAfter(dateFrom) && photo.getDate().toLocalDate().isBefore(dateTo));
     }
 
     @Override
