@@ -1,6 +1,7 @@
 package telran.album.model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Photo implements Comparable<Photo>{
@@ -48,12 +49,13 @@ public class Photo implements Comparable<Photo>{
 
     @Override
     public String toString() {
+        DateTimeFormatter photoDateFormat = DateTimeFormatter.ofPattern("dd MMM yyyy h:mm a");
         return "Photo{" +
                 "albumID=" + albumID +
                 ", photoID=" + photoID +
                 ", title='" + title + '\'' +
                 ", url='" + url + '\'' +
-                ", date=" + date +
+                ", date=" + date.format(photoDateFormat) +
                 '}';
     }
 

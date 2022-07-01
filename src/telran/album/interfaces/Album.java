@@ -3,6 +3,7 @@ package telran.album.interfaces;
 import telran.album.model.Photo;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public interface Album {
     boolean addPhoto (Photo photo);
@@ -14,6 +15,10 @@ public interface Album {
 
     void printPhotos();
     int size();
+
+    LocalDateTime parseDate (String date);
+
+
 
 
 }

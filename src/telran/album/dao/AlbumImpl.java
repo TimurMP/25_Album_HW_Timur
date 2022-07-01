@@ -4,6 +4,8 @@ import telran.album.interfaces.Album;
 import telran.album.model.Photo;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class AlbumImpl implements Album {
     Photo[] photos;
@@ -46,7 +48,18 @@ public class AlbumImpl implements Album {
 
     @Override
     public void printPhotos() {
+        for (int i = 0; i < size; i++) {
+            System.out.println(photos[i]);
 
+        }
+
+    }
+
+    @Override
+
+    public LocalDateTime parseDate(String date){
+      String pattern = "dd.MMM.yyyy h:mm a";
+        return LocalDateTime.parse(date, DateTimeFormatter.ofPattern(pattern));
     }
 
     @Override
