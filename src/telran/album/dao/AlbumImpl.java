@@ -58,11 +58,11 @@ public class AlbumImpl implements Album {
         return true;
     }
 
-    private Photo[] sortPhotos(Photo[] photos) {
-        Photo[] photoCopy = new Photo[photos.length];
-        Arrays.sort(photoCopy);
-        return photoCopy;
-    }
+//    private Photo[] sortPhotos(Photo[] photos) {
+//        Photo[] photoCopy = new Photo[photos.length];
+//        Arrays.sort(photoCopy);
+//        return photoCopy;
+//    }
 
 
     @Override
@@ -91,13 +91,31 @@ public class AlbumImpl implements Album {
 
     @Override
     public Photo getPhotoFromAlbum(int photoId, int albumId) {
+
+//        Comparator<Photo> comp = (p1, p2) -> {
+//         int res = Integer.compare(p1.getPhotoID(), p2.getPhotoID());
+//            System.out.println("RES" + res);
+//         if (res!=0){
+//             return Integer.compare(p1.getAlbumID(), p2.getAlbumID());
+//         }
+//
+//         return Integer.compare(p1.getAlbumID(), p2.getAlbumID());
+//        };
+//
+//        Photo pattern = new Photo(albumId, photoId, null, null, parseDate("01.Aug.2025 08:08 PM"));
+//
+//        int index = Arrays.binarySearch(photos, 0, size, pattern);
+//        if (index>=0){
+//            System.out.println(index);
+//            return photos[index];
+//        }
+
+
         for (int i = 0; i < size; i++) {
             if (photoId == photos[i].getPhotoID() && albumId == photos[i].getAlbumID()) {
                 return photos[i];
             }
-
         }
-
         return null;
     }
 

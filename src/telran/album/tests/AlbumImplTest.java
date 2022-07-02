@@ -21,7 +21,7 @@ class AlbumImplTest {
     @BeforeEach
     void setUp() {
         album = new AlbumImpl(7);
-        myVacation = new  Photo[6];
+        myVacation = new Photo[6];
         myVacation[0] = new Photo(504, 1, "Sunset", "http://127.0.0.1/001", album.parseDate("01.Feb.2020 03:08 PM"));
         myVacation[1] = new Photo(504, 2, "Drunk", "http://127.0.0.1/002", album.parseDate("02.Mar.2021 03:08 AM"));
         myVacation[2] = new Photo(504, 3, "Coliseum", "http://127.0.0.1/003", album.parseDate("01.Aug.2025 08:08 PM"));
@@ -49,7 +49,7 @@ class AlbumImplTest {
 
     @Test
     void removePhoto() {
-        assertFalse(album.removePhoto(666,666));
+        assertFalse(album.removePhoto(666, 666));
         album.removePhoto(3, 504);
         assertEquals(5, album.getSize());
         album.printPhotos();
@@ -59,7 +59,7 @@ class AlbumImplTest {
     @Test
     void updatePhoto() {
         Photo expected = new Photo(505, 2, "TA", "http://10.10.10.10/myTrip/002", album.parseDate("02.Oct.2021 03:08 AM"));
-        album.updatePhoto(2,505,"http://10.10.10.10/myTrip/002");
+        album.updatePhoto(2, 505, "http://10.10.10.10/myTrip/002");
         assertEquals(expected, myVacation[4]);
         album.printPhotos();
 
@@ -67,14 +67,14 @@ class AlbumImplTest {
 
     @Test
     void getPhotoFromAlbum() {
-        Photo photo = album.getPhotoFromAlbum(3,504);
+        Photo photo = album.getPhotoFromAlbum(3, 504);
         assertEquals(myVacation[2], photo);
-        assertNull(album.getPhotoFromAlbum(55, 555));
+        assertNull(album.getPhotoFromAlbum(555, 555));
     }
 
     @Test
     void getAllPhotosFromAlbum() {
-        Photo[] expected = {myVacation[3],myVacation[4],myVacation[5]};
+        Photo[] expected = {myVacation[3], myVacation[4], myVacation[5]};
         assertArrayEquals(expected, album.getAllPhotosFromAlbum(505));
     }
 
@@ -82,7 +82,7 @@ class AlbumImplTest {
     void getPhotoBetweenDate() {
         LocalDate from = LocalDate.of(2020, 2, 1);
         LocalDate after = LocalDate.of(2022, 1, 1);
-        Photo[] expected = {myVacation[0],myVacation[1],myVacation[4]};
+        Photo[] expected = {myVacation[0], myVacation[1], myVacation[4]};
         assertArrayEquals(expected, album.getPhotoBetweenDate(from, after));
 
 
@@ -93,7 +93,7 @@ class AlbumImplTest {
     void Temp() {
         int compare = myVacation[0].compareTo(myVacation[3]);
         System.out.println(compare);
-        Photo[] expected = {myVacation[0],myVacation[3]};
+        Photo[] expected = {myVacation[0], myVacation[3]};
         for (int i = 0; i < expected.length; i++) {
             System.out.println(expected[i]);
         }
@@ -105,11 +105,6 @@ class AlbumImplTest {
         }
 
     }
-
-
-
-
-
 
 
 }

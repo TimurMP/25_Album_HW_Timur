@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-public class Photo implements Comparable<Photo>{
+public class Photo implements Comparable<Photo> {
     int albumID;
     int photoID;
     String title;
